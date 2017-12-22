@@ -17,7 +17,7 @@ namespace Wilcommerce.Auth.Data.EFCore.ReadModels
         /// <summary>
         /// Construct the auth database
         /// </summary>
-        /// <param name="context"></param>
+        /// <param name="context">The auth context instance</param>
         public AuthDatabase(AuthContext context)
         {
             _context = context;
