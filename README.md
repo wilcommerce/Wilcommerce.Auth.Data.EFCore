@@ -8,3 +8,17 @@ For example in an ASP.NET Core project add this line to the ConfigureServices me
 ```<C#>
 services.AddDbContext<AuthContext>(options => // Specify your provider);
 ```
+
+The AuthContext is injected in the read model component and the Repository implementation.
+
+## Read model Component
+The CatalogDatabase class is the implementation of the [IAuthDatabase](https://github.com/wilcommerce/Wilcommerce.Auth/blob/develop/src/Wilcommerce.Auth/ReadModels/IAuthDatabase.cs) interface.
+
+It provides a facade to access all the readonly data.
+It requires an instance of AuthContext as constructor parameters.
+
+## Repository Component
+The Repository class is the implementation of the [IRepository](https://github.com/wilcommerce/Wilcommerce.Auth/blob/develop/src/Wilcommerce.Auth/Repository/IRepository.cs) interface.
+
+It provides all the methods useful for persist an Aggregate model. 
+It requires a AuthContext instance as constructor parameter.
