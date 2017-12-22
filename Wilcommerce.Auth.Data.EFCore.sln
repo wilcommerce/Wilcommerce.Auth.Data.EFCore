@@ -3,9 +3,32 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27130.2010
 MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{FFCB673E-3CF8-4070-AA20-15F58D93C84B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wilcommerce.Auth.Data.EFCore", "src\Wilcommerce.Auth.Data.EFCore\Wilcommerce.Auth.Data.EFCore.csproj", "{29CC646C-A647-4546-81D6-A29D27EB3E0D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution items", "Solution items", "{5BA29B0B-D304-4959-BA52-BB617E893BD6}"
+	ProjectSection(SolutionItems) = preProject
+		LICENSE = LICENSE
+		README.md = README.md
+	EndProjectSection
+EndProject
 Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{29CC646C-A647-4546-81D6-A29D27EB3E0D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{29CC646C-A647-4546-81D6-A29D27EB3E0D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{29CC646C-A647-4546-81D6-A29D27EB3E0D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{29CC646C-A647-4546-81D6-A29D27EB3E0D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{29CC646C-A647-4546-81D6-A29D27EB3E0D} = {FFCB673E-3CF8-4070-AA20-15F58D93C84B}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {DAD1ECE9-54E4-4554-AD46-A3BB13BB13A8}
