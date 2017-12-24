@@ -1,6 +1,11 @@
 # Wilcommerce.Auth.Data.EFCore
 Contains an implementation of [Wilcommerce.Auth](https://github.com/wilcommerce/Wilcommerce.Auth) package using Entity Framework Core as persistence framework.
 
+## Installation
+Nuget package available here
+
+[https://www.nuget.org/packages/Wilcommerce.Auth.Data.EFCore](https://www.nuget.org/packages/Wilcommerce.Auth.Data.EFCore)
+
 ## Usage
 Add the AuthContext class to your project.
 
