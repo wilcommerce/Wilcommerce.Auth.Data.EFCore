@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Linq;
 using Wilcommerce.Auth.Data.EFCore.ReadModels;
 using Wilcommerce.Auth.Data.EFCore.Test.Fixtures;
 using Wilcommerce.Auth.Models;
-using Wilcommerce.Auth.Services;
 using Xunit;
 
 namespace Wilcommerce.Auth.Data.EFCore.Test.ReadModels
