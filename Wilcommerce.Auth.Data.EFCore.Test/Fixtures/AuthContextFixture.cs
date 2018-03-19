@@ -1,4 +1,6 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
+using Moq;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -40,7 +42,9 @@ namespace Wilcommerce.Auth.Data.EFCore.Test.Fixtures
 
         protected virtual void PrepareData()
         {
-            TestAdmin = User.CreateAsAdministrator("Admin", "admin@admin.com", "password");
+            var passwordHasher = new Mock<IPasswordHasher<User>>().Object;
+
+            TestAdmin = User.CreateAsAdministrator("Admin", "admin@admin.com", "password", passwordHasher);
             var tokenGenerator = new TokenGenerator();
             Token = tokenGenerator.GenerateForUser(TestAdmin);
 
