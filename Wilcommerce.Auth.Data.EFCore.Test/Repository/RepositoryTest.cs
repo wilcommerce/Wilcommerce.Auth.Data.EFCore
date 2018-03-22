@@ -1,7 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using Microsoft.AspNetCore.Identity;
+using Moq;
+using System;
 using System.Linq;
-using System.Text;
 using Wilcommerce.Auth.Data.EFCore.ReadModels;
 using Wilcommerce.Auth.Data.EFCore.Test.Fixtures;
 using Wilcommerce.Auth.Models;
@@ -31,7 +31,8 @@ namespace Wilcommerce.Auth.Data.EFCore.Test.Repository
         {
             var tokensCount = _database.Tokens.Count();
 
-            var admin = User.CreateAsAdministrator("Admin2", "admin2@admin.com", "password");
+            var passwordHasher = new Mock<IPasswordHasher<User>>().Object;
+            var admin = User.CreateAsAdministrator("Admin2", "admin2@admin.com", "password", passwordHasher);
             var tokenGenerator = new TokenGenerator();
             string token = tokenGenerator.GenerateForUser(admin);
 
