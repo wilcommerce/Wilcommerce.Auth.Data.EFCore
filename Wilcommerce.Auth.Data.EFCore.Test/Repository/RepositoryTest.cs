@@ -1,9 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Moq;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using Wilcommerce.Auth.Data.EFCore.ReadModels;
 using Wilcommerce.Auth.Data.EFCore.Test.Fixtures;
 using Wilcommerce.Auth.Models;

@@ -2,8 +2,6 @@
 using Microsoft.EntityFrameworkCore;
 using Moq;
 using System;
-using System.Collections.Generic;
-using System.Text;
 using Wilcommerce.Auth.Models;
 using Wilcommerce.Auth.Services;
 using Wilcommerce.Core.Common.Domain.Models;
