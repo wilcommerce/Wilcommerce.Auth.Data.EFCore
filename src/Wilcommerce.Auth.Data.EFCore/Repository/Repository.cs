@@ -20,7 +20,7 @@ namespace Wilcommerce.Auth.Data.EFCore.Repository
         /// <param name="context">The auth context instance</param>
         public Repository(AuthContext context)
         {
-            _context = context;
+            _context = context ?? throw new ArgumentNullException(nameof(context));
         }
 
         /// <summary>
