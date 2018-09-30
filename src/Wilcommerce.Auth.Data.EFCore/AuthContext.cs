@@ -1,5 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
-using Wilcommerce.Auth.Data.EFCore.Mapping;
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using Wilcommerce.Auth.Models;
 
 namespace Wilcommerce.Auth.Data.EFCore
@@ -7,13 +7,8 @@ namespace Wilcommerce.Auth.Data.EFCore
     /// <summary>
     /// Defines the Entity Framework context for the auth package
     /// </summary>
-    public class AuthContext : DbContext
+    public class AuthContext : IdentityDbContext<User>
     {
-        /// <summary>
-        /// Get or set the list of user tokens
-        /// </summary>
-        public virtual DbSet<UserToken> UserTokens { get; set; }
-
         /// <summary>
         /// Construct the auth context
         /// </summary>
@@ -21,19 +16,22 @@ namespace Wilcommerce.Auth.Data.EFCore
         public AuthContext(DbContextOptions<AuthContext> options)
             : base(options)
         {
-
+            
         }
 
         /// <summary>
-        /// Override the <see cref="DbContext.OnModelCreating(ModelBuilder)"/>
+        /// Override the OnModelCreating method
         /// </summary>
-        /// <param name="modelBuilder">The model builder instance</param>
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        /// <param name="builder">The model builder instance</param>
+        protected override void OnModelCreating(ModelBuilder builder)
         {
-            modelBuilder
-                .MapUserToken();
-
-            base.OnModelCreating(modelBuilder);
+            base.OnModelCreating(builder);
+            foreach (var entity in builder.Model.GetEntityTypes())
+            {
+                entity
+                    .Relational()
+                    .TableName = $"Wilcommerce_{entity.ClrType.Name}";
+            }
         }
     }
 }

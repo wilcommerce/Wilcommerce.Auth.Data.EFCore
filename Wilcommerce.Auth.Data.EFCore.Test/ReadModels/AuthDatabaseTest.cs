@@ -18,25 +18,6 @@ namespace Wilcommerce.Auth.Data.EFCore.Test.ReadModels
             _database = new AuthDatabase(fixture.Context);
         }
 
-        [Fact]
-        public void AuthDatabase_Should_Contain_A_PasswordRecovery_Token()
-        {
-            bool existsToken = _database.Tokens.Any(t => t.TokenType == TokenTypes.PasswordRecovery);
-            Assert.True(existsToken);
-        }
-
-        [Fact]
-        public void AuthDatabase_Should_Contain_A_Token_With_Fixture_Value()
-        {
-            bool existsToken = _database.Tokens.Any(t => t.Token == _fixture.Token);
-            Assert.True(existsToken);
-        }
-
-        [Fact]
-        public void AuthDatabase_Should_Contain_A_Token_With_TestAdmin_Id()
-        {
-            bool existsToken = _database.Tokens.Any(t => t.UserId == _fixture.TestAdmin.Id);
-            Assert.True(existsToken);
-        }
+        
     }
 }
