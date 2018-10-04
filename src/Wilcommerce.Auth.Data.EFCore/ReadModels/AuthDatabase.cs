@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using Wilcommerce.Auth.Models;
 using Wilcommerce.Auth.ReadModels;
 
@@ -20,7 +21,7 @@ namespace Wilcommerce.Auth.Data.EFCore.ReadModels
         /// <param name="context">The auth context instance</param>
         public AuthDatabase(AuthContext context)
         {
-            _context = context;
+            _context = context ?? throw new ArgumentNullException(nameof(context));
         }
 
         /// <summary>
