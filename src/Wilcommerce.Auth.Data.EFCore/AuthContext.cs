@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using Wilcommerce.Auth.Data.EFCore.Mapping;
 using Wilcommerce.Auth.Models;
 
 namespace Wilcommerce.Auth.Data.EFCore
@@ -26,12 +27,7 @@ namespace Wilcommerce.Auth.Data.EFCore
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
-            foreach (var entity in builder.Model.GetEntityTypes())
-            {
-                entity
-                    .Relational()
-                    .TableName = $"Wilcommerce_{entity.ClrType.Name}";
-            }
+            builder.MapIdentity();
         }
     }
 }

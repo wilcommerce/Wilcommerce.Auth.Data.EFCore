@@ -2,8 +2,8 @@
 using Microsoft.EntityFrameworkCore;
 using Moq;
 using System;
+using System.Linq;
 using Wilcommerce.Auth.Models;
-using Wilcommerce.Auth.Services;
 
 namespace Wilcommerce.Auth.Data.EFCore.Test.Fixtures
 {
@@ -11,8 +11,12 @@ namespace Wilcommerce.Auth.Data.EFCore.Test.Fixtures
     {
         public AuthContext Context { get; protected set; }
 
+        public IPasswordHasher<User> PasswordHasher { get; protected set; }
+
         public AuthContextFixture()
         {
+            PasswordHasher = new Mock<IPasswordHasher<User>>().Object;
+
             BuildContext();
             PrepareData();
         }
@@ -30,12 +34,21 @@ namespace Wilcommerce.Auth.Data.EFCore.Test.Fixtures
 
         protected virtual void CleanData()
         {
-            
+            if (Context.Users.Any())
+            {
+                Context.RemoveRange(Context.Users);
+            }
+
+            Context.SaveChanges();
         }
 
         protected virtual void PrepareData()
         {
-            
+            var user = User.CreateAsAdministrator("Administrator", "admin@wilcommerce.com", true);
+            user.PasswordHash = PasswordHasher.HashPassword(user, "password");
+
+            Context.Add(user);
+            Context.SaveChanges();
         }
 
         protected virtual void BuildContext()
