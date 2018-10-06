@@ -25,8 +25,8 @@ namespace Wilcommerce.Auth.Data.EFCore.ReadModels
         }
 
         /// <summary>
-        /// Get the tokens created by the platform
+        /// Get the list of users
         /// </summary>
-        public IQueryable<UserToken> Tokens => _context.UserTokens;
+        public IQueryable<User> Users => _context.Users;
     }
 }
