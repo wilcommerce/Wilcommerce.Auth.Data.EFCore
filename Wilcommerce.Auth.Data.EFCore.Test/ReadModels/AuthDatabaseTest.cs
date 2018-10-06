@@ -2,6 +2,7 @@
 using Wilcommerce.Auth.Data.EFCore.ReadModels;
 using Wilcommerce.Auth.Data.EFCore.Test.Fixtures;
 using Wilcommerce.Auth.Models;
+using Wilcommerce.Auth.ReadModels;
 using Xunit;
 
 namespace Wilcommerce.Auth.Data.EFCore.Test.ReadModels
@@ -19,24 +20,32 @@ namespace Wilcommerce.Auth.Data.EFCore.Test.ReadModels
         }
 
         [Fact]
-        public void AuthDatabase_Should_Contain_A_PasswordRecovery_Token()
+        public void Users_Should_Contains_An_Administrator_User()
         {
-            bool existsToken = _database.Tokens.Any(t => t.TokenType == TokenTypes.PasswordRecovery);
-            Assert.True(existsToken);
+            bool existAdministrator = _database.Users
+                .Any(u => u.UserName == "admin@wilcommerce.com" && u.Email == "admin@wilcommerce.com" && u.Name == "Administrator");
+
+            Assert.True(existAdministrator);
         }
 
         [Fact]
-        public void AuthDatabase_Should_Contain_A_Token_With_Fixture_Value()
+        public void Users_WithUsername_Should_Match_Given_Username()
         {
-            bool existsToken = _database.Tokens.Any(t => t.Token == _fixture.Token);
-            Assert.True(existsToken);
+            bool exists = _database.Users
+                .WithUsername("admin@wilcommerce.com")
+                .Any();
+
+            Assert.True(exists);
         }
 
         [Fact]
-        public void AuthDatabase_Should_Contain_A_Token_With_TestAdmin_Id()
+        public void Users_Actives_Should_Return_Only_Users_With_IsActive_Equal_To_True()
         {
-            bool existsToken = _database.Tokens.Any(t => t.UserId == _fixture.TestAdmin.Id);
-            Assert.True(existsToken);
+            bool exists = _database.Users
+                .Actives()
+                .Any(u => !u.IsActive);
+
+            Assert.False(exists);
         }
     }
 }

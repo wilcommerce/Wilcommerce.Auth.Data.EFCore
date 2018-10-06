@@ -2,9 +2,8 @@
 using Microsoft.EntityFrameworkCore;
 using Moq;
 using System;
+using System.Linq;
 using Wilcommerce.Auth.Models;
-using Wilcommerce.Auth.Services;
-using Wilcommerce.Core.Common.Domain.Models;
 
 namespace Wilcommerce.Auth.Data.EFCore.Test.Fixtures
 {
@@ -12,12 +11,12 @@ namespace Wilcommerce.Auth.Data.EFCore.Test.Fixtures
     {
         public AuthContext Context { get; protected set; }
 
-        public User TestAdmin { get; protected set; }
-
-        public string Token { get; protected set; }
+        public IPasswordHasher<User> PasswordHasher { get; protected set; }
 
         public AuthContextFixture()
         {
+            PasswordHasher = new Mock<IPasswordHasher<User>>().Object;
+
             BuildContext();
             PrepareData();
         }
@@ -35,20 +34,20 @@ namespace Wilcommerce.Auth.Data.EFCore.Test.Fixtures
 
         protected virtual void CleanData()
         {
-            Context.UserTokens.RemoveRange(Context.UserTokens);
+            if (Context.Users.Any())
+            {
+                Context.RemoveRange(Context.Users);
+            }
+
+            Context.SaveChanges();
         }
 
         protected virtual void PrepareData()
         {
-            var passwordHasher = new Mock<IPasswordHasher<User>>().Object;
+            var user = User.CreateAsAdministrator("Administrator", "admin@wilcommerce.com", true);
+            user.PasswordHash = PasswordHasher.HashPassword(user, "password");
 
-            TestAdmin = User.CreateAsAdministrator("Admin", "admin@admin.com", "password", passwordHasher);
-            var tokenGenerator = new TokenGenerator();
-            Token = tokenGenerator.GenerateForUser(TestAdmin);
-
-            var userToken = UserToken.PasswordRecovery(TestAdmin, Token, DateTime.Now.AddDays(10));
-
-            Context.UserTokens.Add(userToken);
+            Context.Add(user);
             Context.SaveChanges();
         }
 
