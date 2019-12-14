@@ -5,16 +5,25 @@
     <TargetFramework>netstandard2.1</TargetFramework>
     <AssemblyName>Wilcommerce.Auth.Data.EFCore</AssemblyName>
     <PackageId>Wilcommerce.Auth.Data.EFCore</PackageId>
-    <Version>1.0.0-rc4</Version>
+    <Version>1.0.0</Version>
     <Authors>Alberto Mori</Authors>
     <Description>Implementation of Authentication package for Entity Framework Core</Description>
+    <PackageIcon>icon.png</PackageIcon>
     <PackageLicenseUrl>https://github.com/wilcommerce/Wilcommerce.Auth.Data.EFCore/blob/master/LICENSE</PackageLicenseUrl>
     <PackageProjectUrl>https://github.com/wilcommerce/Wilcommerce.Auth.Data.EFCore</PackageProjectUrl>
-    <PackageIconUrl>http://wilcommerce.com/logo64.png</PackageIconUrl>
     <RepositoryUrl>https://github.com/wilcommerce/Wilcommerce.Auth.Data.EFCore</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <PackageTags>wilcommerce;ecommerce;opensource;.netcore;.net;entity framework core</PackageTags>
+    <Title>Wilcommerce.Auth.Data.EFCore</Title>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
   </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="..\..\icon.png">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
+  </ItemGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <DocumentationFile>bin\Debug\netstandard2.0\Wilcommerce.Auth.Data.EFCore.xml</DocumentationFile>
