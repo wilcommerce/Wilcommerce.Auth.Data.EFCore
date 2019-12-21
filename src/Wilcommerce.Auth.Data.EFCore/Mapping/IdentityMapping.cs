@@ -15,13 +15,6 @@ namespace Wilcommerce.Auth.Data.EFCore.Mapping
         /// <returns>The modelBuilder instance</returns>
         public static ModelBuilder MapIdentity(this ModelBuilder modelBuilder)
         {
-            foreach (var entity in modelBuilder.Model.GetEntityTypes())
-            {
-                entity
-                    .Relational()
-                    .TableName = $"Wilcommerce_{entity.ClrType.Name}";
-            }
-
             modelBuilder.Entity<User>()
                 .OwnsOne(u => u.ProfileImage);
 

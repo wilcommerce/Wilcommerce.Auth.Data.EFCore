@@ -2,19 +2,27 @@
 
   <PropertyGroup>
     <VersionPrefix>1.0.0</VersionPrefix>
-    <TargetFramework>netstandard2.0</TargetFramework>
+    <TargetFramework>netstandard2.1</TargetFramework>
     <AssemblyName>Wilcommerce.Auth.Data.EFCore</AssemblyName>
     <PackageId>Wilcommerce.Auth.Data.EFCore</PackageId>
-    <Version>1.0.0-rc4</Version>
+    <Version>1.0.0</Version>
     <Authors>Alberto Mori</Authors>
     <Description>Implementation of Authentication package for Entity Framework Core</Description>
-    <PackageLicenseUrl>https://github.com/wilcommerce/Wilcommerce.Auth.Data.EFCore/blob/master/LICENSE</PackageLicenseUrl>
+    <PackageIcon>icon.png</PackageIcon>
     <PackageProjectUrl>https://github.com/wilcommerce/Wilcommerce.Auth.Data.EFCore</PackageProjectUrl>
-    <PackageIconUrl>http://wilcommerce.com/logo64.png</PackageIconUrl>
     <RepositoryUrl>https://github.com/wilcommerce/Wilcommerce.Auth.Data.EFCore</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <PackageTags>wilcommerce;ecommerce;opensource;.netcore;.net;entity framework core</PackageTags>
+    <Title>Wilcommerce.Auth.Data.EFCore</Title>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
   </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="..\..\icon.png">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
+  </ItemGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <DocumentationFile>bin\Debug\netstandard2.0\Wilcommerce.Auth.Data.EFCore.xml</DocumentationFile>
@@ -25,16 +33,19 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="2.1.3" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="2.1.4" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="2.1.4" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="2.1.4" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="3.1.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="3.1.0">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="3.1.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Relational.Design" Version="2.0.0-preview1-final" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="2.1.4">
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.0">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="Wilcommerce.Auth" Version="1.0.0-rc6" />
+    <PackageReference Include="Wilcommerce.Auth" Version="1.0.0" />
   </ItemGroup>
 
 </Project>
