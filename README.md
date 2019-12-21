@@ -39,6 +39,7 @@ dotnet ef database update -c Wilcommerce.Auth.Data.EFCore.AuthContext
 
 // Using Package Manager Console
 EntityFrameworkCore\Update-Database -Context Wilcommerce.Auth.Data.EFCore.AuthContext
+```
 
 ## Read model Component
 The AuthDatabase class is the implementation of the [IAuthDatabase](https://github.com/wilcommerce/Wilcommerce.Auth/blob/develop/src/Wilcommerce.Auth/ReadModels/IAuthDatabase.cs) interface.
