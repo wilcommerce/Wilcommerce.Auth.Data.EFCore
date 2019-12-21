@@ -9,7 +9,6 @@
     <Authors>Alberto Mori</Authors>
     <Description>Implementation of Authentication package for Entity Framework Core</Description>
     <PackageIcon>icon.png</PackageIcon>
-    <PackageLicenseUrl>https://github.com/wilcommerce/Wilcommerce.Auth.Data.EFCore/blob/master/LICENSE</PackageLicenseUrl>
     <PackageProjectUrl>https://github.com/wilcommerce/Wilcommerce.Auth.Data.EFCore</PackageProjectUrl>
     <RepositoryUrl>https://github.com/wilcommerce/Wilcommerce.Auth.Data.EFCore</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
